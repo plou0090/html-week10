@@ -68,7 +68,7 @@ h2{
 }
 
 .container{
-    width:1024px;
+    width:90%;
     margin:0 auto;
 }
 
@@ -98,3 +98,80 @@ nav ul li{
 				        Flexbox
 ***********************************************************/
 
+/* set the container to display:flex, not the items */
+nav ul{
+	background-color: rgb(220,220,220);
+	display: flex;
+	/* justify content tell the browser how you want the items inside the flexbox to behave on the main axis */
+	justify-content: space-evenly;
+}
+
+/* .bodyflex contains both the main and the aside */
+.bodyflex{
+	display: flex;
+}
+
+main{
+	width: 75%;
+}
+
+aside{
+	width: 25%;
+	/* display:flex is not inherited by the the elements inside the container */
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+aside .sidebarbox{
+	/* by default flex basis is set to auto, which means it will shrink to the size of the content */
+	flex-basis: 0;
+	/* you have to use flex grow or shrink to tell the boxes how you want them to size 
+	themselves relative to the box that they are in */
+	flex-grow: 1;
+	display: flex;
+	/* justify content looks at the main axis (horizontal) */
+	justify-content: center;
+	/* align items looks at the cross axis (vertical) */
+	align-items: center;
+}
+
+#fish{
+	display: flex;
+	/* flex-wrap: wrap; this will tell the items to continue onto the next line if they do not fit into the given space */
+
+}
+
+#fish img{
+	width: 100%;
+}
+
+#rainbow{
+	/* without any other instructions, elements with no content dissappear when you set display:flex */
+	display: flex;
+}
+
+#rainbow div{
+	flex-grow: 1;
+}
+
+#rainbow #re, #rainbow #bl, #rainbow #in{
+	/* this will set the specified divs to be twice the size of the others, while still fitting inside the parent element
+	so it will automatically adjust the widths of the elements */
+	flex-grow: 2;
+}
+
+#rainbow #gr{
+	flex-grow: 4;
+}
+
+#content{
+	/* divs with content will tkae up as much room as they need, relative to the content of the other elements */
+	display: flex;
+}
+
+/* flex: is the shorthand property for doing all three at once. grow, shrink, basis, in that order */
+#content p:nth-child(1){ flex: 1 1 0; }
+#content p:nth-child(2){ flex: 2 1 0; }
+#content p:nth-child(3){ flex: 4 1 0; }
+#content p:nth-child(4){ flex: 2 1 0; }
+#content p:nth-child(5){ flex: 1 1 0; }
